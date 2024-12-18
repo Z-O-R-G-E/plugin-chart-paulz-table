@@ -1,5 +1,5 @@
 import { TableType } from '../../consts';
-import { PaulzTableFormData, PaulzTableProps } from '../../types';
+import {PaulzTableFormData, PaulzTableProps} from '../../types';
 import { getTableType } from '../../utils';
 import { getPivotProps, getStraightProps } from './props';
 

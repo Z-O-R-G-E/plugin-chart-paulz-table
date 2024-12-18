@@ -1,21 +1,9 @@
 import {
-  ChartDataResponseResult,
-  ChartProps,
-  DataRecordValue,
-  QueryFormData,
-  QueryFormMetric,
+    ChartDataResponseResult, ChartProps, DataRecord,
+    QueryFormData,
+    QueryFormMetric,
 } from '@superset-ui/core';
 import { QueryMode } from '../../consts';
-
-export type CustomFormatter = (value: DataRecordValue) => string;
-
-export type TableColumnConfig = {};
-
-export interface DataColumnMeta {
-}
-
-export interface StraightTableData {
-}
 
 /*-----------------------------------------*/
 
@@ -27,11 +15,15 @@ export type StraightTableFormData = QueryFormData &
     raw_columns_straight?: QueryFormMetric[] | null;
   };
 
+export interface StraightTableTransformedProps<D extends DataRecord = DataRecord> {
+    data: D[];
+    height: number;
+    width: number;
+}
+
 export interface StraightTableStylesProps {}
 
-export interface StraightTableTransformedProps {}
-
 export type StraightTableProps = ChartProps & {
-  rawFormData?: StraightTableFormData;
-  queriesData?: ChartDataResponseResult[];
+    rawFormData: StraightTableFormData;
+    queriesData: ChartDataResponseResult[];
 };
