@@ -9,7 +9,7 @@ import { TableType } from '../../consts';
 
 const buildQuery: BuildQuery = (formData: PaulzTableFormData, options) => {
   const tableType = getTableType(formData);
-  console.log('BuildQuery', formData);
+
   if (tableType === TableType.STRAIGHT) {
     return getStraightBuildQueryContext(formData, options);
   }

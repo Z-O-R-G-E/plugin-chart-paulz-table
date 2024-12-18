@@ -1,6 +1,6 @@
 import {
   BuildQuery,
-  buildQueryContext,
+  buildQueryContext, QueryFormColumn,
 } from '@superset-ui/core';
 import { PaulzTableFormData } from '../../../../types';
 
@@ -41,6 +41,13 @@ export const getStraightBuildQueryContext: BuildQuery<PaulzTableFormData> = (
       orderby,
       metrics,
     };
+
+    const rawCols = formData.raw_columns_straight as QueryFormColumn[];
+    if (rawCols && queryObject.columns) {
+      queryObject.columns = [
+        ...new Set([...queryObject.columns, ...rawCols]),
+      ];
+    }
 
     return [queryObject];
   });
