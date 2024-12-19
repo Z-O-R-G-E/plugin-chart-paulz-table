@@ -1,7 +1,7 @@
 import { isEqualArray } from '@superset-ui/core';
 import { StraightTableProps } from '../../types/StraightTableTypes';
 
-export default function index(
+export default function isEqualColumns(
   propsA: StraightTableProps[],
   propsB: StraightTableProps[],
 ) {

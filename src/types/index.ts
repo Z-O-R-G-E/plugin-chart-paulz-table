@@ -1,14 +1,14 @@
 import {QueryFormData} from '@superset-ui/core';
 
 import {
-  StraightTableFormData,
-  StraightTableProps,
-  StraightTableStylesProps,
+    StraightTableFormData,
+    StraightTableProps,
+    StraightTableStylesProps, StraightTableTransformedProps,
 } from './StraightTableTypes';
 import {
-  PivotTableFormData,
-  PivotTableProps,
-  PivotTableStylesProps,
+    PivotTableFormData,
+    PivotTableProps,
+    PivotTableStylesProps, PivotTableTransformedProps,
 } from './PivotTableTypes';
 import { TableType } from '../consts';
 
@@ -23,5 +23,7 @@ export type PaulzTableStylesProps = PivotTableStylesProps &
     height: number;
     width: number;
   };
+
+export type PaulzTableTransformedProps = Partial<StraightTableTransformedProps> & Partial<PivotTableTransformedProps>;
 
 export type PaulzTableProps = PivotTableProps & StraightTableProps & PaulzTableStylesProps;

@@ -4,16 +4,17 @@ import {
   TimeFormatFunction,
 } from '@superset-ui/core';
 
-export default class Index extends Date {
+export default class DateWithFormatter extends Date {
   formatter: TimeFormatFunction;
 
   input: DataRecordValue;
 
   constructor(
-    input: DataRecordValue,
-    { formatter = String }: { formatter?: TimeFormatFunction } = {},
+      input: DataRecordValue,
+      { formatter = String }: { formatter?: TimeFormatFunction } = {},
   ) {
     let value = input;
+    // assuming timestamps without a timezone is in UTC time
     if (typeof value === 'string') {
       value = normalizeTimestamp(value);
     }

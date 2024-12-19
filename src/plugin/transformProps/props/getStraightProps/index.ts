@@ -2,6 +2,7 @@ import {
     StraightTableProps, StraightTableTransformedProps,
 } from '../../../../types/StraightTableTypes';
 import {processDataRecords} from "../../utils";
+import {processColumns} from "../../utils/processColumns";
 
 export const getStraightProps = (
   chartProps: StraightTableProps,
@@ -10,12 +11,25 @@ export const getStraightProps = (
         height,
         width,
         queriesData = [],
+        filterState,
     } = chartProps;
 
+    const [,, columns] = processColumns(chartProps);
+
     let baseQuery;
+    let rowCount;
+
     [baseQuery] = queriesData;
+    rowCount = baseQuery?.rowcount ?? 0;
 
-    const data = processDataRecords(baseQuery?.data);
+    const data = processDataRecords(baseQuery?.data, columns);
 
-    return {data, height, width};
+    return {
+        data,
+        columns,
+        height,
+        width,
+        rowCount,
+        filters: filterState.filters
+    };
 };
