@@ -2,21 +2,17 @@ import {
   PivotTableProps,
   PivotTableTransformedProps,
 } from '../../../../types/PivotTableTypes';
-import {processDataRecords} from "../../utils";
+import {DataRecord} from "@superset-ui/core";
 
 export function getPivotProps(
   chartProps: PivotTableProps,
 ): PivotTableTransformedProps {
   const {
     height,
-    width,
-    queriesData = [],
+    width
   } = chartProps;
 
-  let baseQuery;
-  [baseQuery] = queriesData;
-
-  const data = processDataRecords(baseQuery?.data);
+  const data: DataRecord[] = [];
 
   return {data, height, width};
 }
