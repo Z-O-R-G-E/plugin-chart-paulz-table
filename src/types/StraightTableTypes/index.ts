@@ -2,7 +2,7 @@ import {
     ChartDataResponseResult,
     ChartProps, Currency,
     CurrencyFormatter,
-    DataRecord, DataRecordFilters,
+    DataRecord,
     DataRecordValue,
     GenericDataType,
     NumberFormatter,
@@ -13,6 +13,11 @@ import {
 import { QueryMode } from '../../consts';
 
 /*--------------------General--------------------*/
+export interface TableChartData {
+    records: DataRecord[];
+    columns: string[];
+}
+
 export type StraightTableOptionsProps = {};
 
 export type StraightTableFormData = QueryFormData &
@@ -26,11 +31,7 @@ export interface StraightTableTransformedProps<D extends DataRecord = DataRecord
     width: number;
     data: D[];
     columns: DataColumnMeta[];
-    rowCount?: number;
-    filters?: DataRecordFilters;
 }
-
-export interface StraightTableStylesProps {}
 
 export type StraightTableProps = ChartProps & {
     rawFormData: StraightTableFormData;

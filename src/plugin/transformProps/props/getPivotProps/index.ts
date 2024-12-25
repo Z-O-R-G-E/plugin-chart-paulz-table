@@ -3,6 +3,7 @@ import {
   PivotTableTransformedProps,
 } from '../../../../types/PivotTableTypes';
 import {DataRecord} from "@superset-ui/core";
+import {DataColumnMeta} from "../../../../types/StraightTableTypes";
 
 export function getPivotProps(
   chartProps: PivotTableProps,
@@ -13,6 +14,7 @@ export function getPivotProps(
   } = chartProps;
 
   const data: DataRecord[] = [];
+  const columns: DataColumnMeta[] = [];
 
-  return {data, height, width};
+  return {data, columns, height, width};
 }

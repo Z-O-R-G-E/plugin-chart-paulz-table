@@ -4,6 +4,7 @@ import {
   DataRecord,
   QueryFormData,
 } from '@superset-ui/core';
+import {DataColumnMeta} from "../StraightTableTypes";
 
 /*-----------------------------------------*/
 
@@ -14,9 +15,10 @@ export type PivotTableFormData = QueryFormData &
 };
 
 export interface PivotTableTransformedProps<D extends DataRecord = DataRecord> {
-  data: D[];
   height: number;
   width: number;
+  data: D[];
+  columns: DataColumnMeta[];
 }
 
 export interface PivotTableStylesProps {}

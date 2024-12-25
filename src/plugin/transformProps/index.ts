@@ -4,16 +4,16 @@ import { getTableType } from '../../utils';
 import { getPivotProps, getStraightProps } from './props';
 
 const transformProps = (chartProps: PaulzTableProps): PaulzTableTransformedProps => {
-  const { formData, width, height } = chartProps;
+  const { formData } = chartProps;
 
   const tableType = getTableType(formData as PaulzTableFormData);
+  const isStraightTable = tableType === TableType.STRAIGHT;
 
-  let transformedProps = { width, height };
+  let transformedProps = { isStraightTable };
 
-  if (tableType === TableType.STRAIGHT) {
+  if (isStraightTable) {
     transformedProps = { ...transformedProps, ...getStraightProps(chartProps) };
-  }
-  if (tableType === TableType.PIVOT) {
+  }else{
     transformedProps = { ...transformedProps, ...getPivotProps(chartProps) };
   }
 

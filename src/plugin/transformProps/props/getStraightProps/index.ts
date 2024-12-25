@@ -11,16 +11,13 @@ export const getStraightProps = (
         height,
         width,
         queriesData = [],
-        filterState,
     } = chartProps;
 
     const [,, columns] = processColumns(chartProps);
 
     let baseQuery;
-    let rowCount;
 
     [baseQuery] = queriesData;
-    rowCount = baseQuery?.rowcount ?? 0;
 
     const data = processDataRecords(baseQuery?.data, columns);
 
@@ -29,7 +26,5 @@ export const getStraightProps = (
         columns,
         height,
         width,
-        rowCount,
-        filters: filterState.filters
     };
 };

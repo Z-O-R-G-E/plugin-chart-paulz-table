@@ -1,29 +1,22 @@
-import {QueryFormData} from '@superset-ui/core';
-
 import {
     StraightTableFormData,
     StraightTableProps,
-    StraightTableStylesProps, StraightTableTransformedProps,
+    StraightTableTransformedProps,
 } from './StraightTableTypes';
 import {
     PivotTableFormData,
     PivotTableProps,
-    PivotTableStylesProps, PivotTableTransformedProps,
+    PivotTableTransformedProps,
 } from './PivotTableTypes';
 import { TableType } from '../consts';
+import {DataRecord} from "@superset-ui/core";
 
-export type PaulzTableFormData = QueryFormData &
-  PivotTableFormData &
-  StraightTableFormData & {
+export type PaulzTableFormData = PivotTableFormData & StraightTableFormData & {
     table_type?: TableType;
-  };
+};
 
-export type PaulzTableStylesProps = PivotTableStylesProps &
-  StraightTableStylesProps & {
-    height: number;
-    width: number;
-  };
+export type PaulzTableTransformedProps<D extends DataRecord = DataRecord> = Partial<StraightTableTransformedProps<D>> & Partial<PivotTableTransformedProps<D>> & {
+    isStraightTable: boolean;
+};
 
-export type PaulzTableTransformedProps = Partial<StraightTableTransformedProps> & Partial<PivotTableTransformedProps>;
-
-export type PaulzTableProps = PivotTableProps & StraightTableProps & PaulzTableStylesProps;
+export type PaulzTableProps = PivotTableProps & StraightTableProps;
